@@ -1,17 +1,29 @@
-package dev.ninjascadastro.CadastroDeNinjas;
+package dev.ninjascadastro.CadastroDeNinjas.Ninjas;
 
+import dev.ninjascadastro.CadastroDeNinjas.Missoes.MissoesModel;
 import jakarta.persistence.*;
-import org.springframework.boot.autoconfigure.web.WebProperties;
 
 @Entity
 @Table(name = "tb_cadastro")
 public class NinjaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
+    private long id;
     private String nome;
     private String email;
     private int idade;
+
+    @ManyToOne
+    @JoinColumn(name = "missoes_id")
+    private MissoesModel missoes;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getEmail() {
         return email;
