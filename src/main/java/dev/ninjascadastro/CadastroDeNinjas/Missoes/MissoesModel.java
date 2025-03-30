@@ -2,11 +2,17 @@ package dev.ninjascadastro.CadastroDeNinjas.Missoes;
 
 import dev.ninjascadastro.CadastroDeNinjas.Ninjas.NinjaModel;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
 @Table(name = "tb_cadastro_de_missoes")
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class MissoesModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,35 +23,7 @@ public class MissoesModel {
     @OneToMany(mappedBy = "missoes")
     private List<NinjaModel> ninjas;
 
-    public MissoesModel() {
-    }
 
-    public MissoesModel(String nomeDaMissao, char nivelMissao) {
-        this.nomeDaMissao = nomeDaMissao;
-        this.nivelMissao = nivelMissao;
-    }
 
-    public long getId() {
-        return id;
-    }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getNomeDaMissao() {
-        return nomeDaMissao;
-    }
-
-    public void setNomeDaMissao(String nomeDaMissao) {
-        this.nomeDaMissao = nomeDaMissao;
-    }
-
-    public char getNivelMissao() {
-        return nivelMissao;
-    }
-
-    public void setNivelMissao(char nivelMissao) {
-        this.nivelMissao = nivelMissao;
-    }
 }
